@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "207339977979",
+    "project_id": "musicheatmap",
+    "storage_bucket": "musicheatmap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207339977979:android:cf41e8e96ff96fe15dc45e",
+        "android_client_info": {
+          "package_name": "com.musicheatmapreact"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC8FnSTndhyZoFC6BpraAUNqx1em2TUyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
