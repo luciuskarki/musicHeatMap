@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import SearchFilter from './SearchBar';
 
 import {
     SafeAreaView,
@@ -17,78 +18,60 @@ import {
 
 
   function HistoryElement(){
+    const [input, setInput] = useState("");
+
     const songArray = dummySongs.map(dummySongs =>
       <View key={dummySongs.id} style={{
         alignItems: 'center',
         justifyContent: 'center',
         padding: 5,
       }}>
-        <View
-        style={{
-          flexDirection: 'row',
-          borderColor: 'black',
-          borderWidth: 2,
-          borderRadius: 10,
-          padding: 10,
-        }}>
-            <View style={{
-              flex:3
-            }}>
-              <Text style={styles.HistoryText}>
-                {dummySongs.username}
-              </Text>
-              <Text style={styles.HistoryText}>
-                {dummySongs.title}
-              </Text>
-              <Text style={styles.HistoryText}>
-                {dummySongs.artist}
-              </Text>
-              <Text style={styles.HistoryText}>
-                {dummySongs.genre}
-              </Text>
-            </View>
-            <View style={{
-                alignContent: 'center',
-                flexDirection: 'row',
-                flex:1
-              }}>
-                <Image 
-                source={require("../assets/settingsicon.png")}
-                style={{
-                  width:100,
-                  height:100
-                }}>
-                </Image>
-            </View>
       </View>
-    </View>
+    
       )
     return (
-        <View>
-        {songArray}
-        </View>
+    <SafeAreaView style = {styles.container}>
+        <TextInput
+        value = {input}
+        onChangeText={(text) => setInput(text)}
+        placeholder= "Search a title..."
+        placeholderTextColor={textColor}
+        style={styles.searchbox}
+      />
+      <SearchFilter data={dummySongs} input = {input} setInput = {setInput}/>
+
+    </SafeAreaView>
     )
   }
   
-  
-  
   function HistoryScreen() {
     return (
-      <HistoryElement>
+      <HistoryElement> 
       </HistoryElement>
     );
   }
   
   export default HistoryScreen;
 
+  var textColor = "#52b788" //b864b9 pink 95d5b2 green
+  var bgColor = "#1b2021"
+
   const styles = StyleSheet.create({
-    HistoryText: {
-      fontSize: 20,
-    },
-    titleText: {
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
+    searchbox:{
+      paddingHorizontal: 20,
+      paddingVertical: 10,
+      borderColor: textColor,
+      backgroundColor: bgColor,
+      color:textColor,
+      borderWidth: 2,
+      borderRadius: 10,
+      marginBottom: 20
+    },      
+    container: {
+      flex: 1,
+      backgroundColor:bgColor ,
+  
+    },  
   });
 
 //Dummy songs
@@ -144,4 +127,4 @@ import {
       genre: 'Minecraft'
     }
     
-  ]
+  ];
