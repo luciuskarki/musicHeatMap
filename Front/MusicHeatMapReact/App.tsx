@@ -9,11 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LoginPage from "./src/screens/LoginScreens/LoginPage.tsx"
 import MyTabs from './src/screens/TabNavs.tsx';
 
-
 //adding this line for a reason i cannot disclose at this time
-
-
-
 
 function App(): React.JSX.Element {
   //<LoginPage /> <MyTabs /> goes in navCont when wanting home page
