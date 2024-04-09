@@ -71,9 +71,11 @@ const styles = StyleSheet.create({
 
 border:{
     flexDirection: 'row',
+    borderTopWidth: 0,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    borderBottomWidth: 4,
     borderColor: textColor,
-    borderWidth: 2,
-    borderRadius: 10,
     padding: 10,
     backgroundColor: bgColor,
 },
