@@ -60,12 +60,24 @@ import {
     searchbox:{
       paddingHorizontal: 20,
       paddingVertical: 10,
-      borderColor: textColor,
       backgroundColor: bgColor,
       color:textColor,
-      borderWidth: 2,
-      borderRadius: 10,
-      marginBottom: 20
+      marginBottom: 10,
+     borderTopWidth: 0,
+     borderLeftWidth: 0,
+     borderRightWidth: 0,
+     borderBottomWidth: 2,
+     borderColor: textColor
+
+      //  borderTopLeftRadius: 10,       //Just messing around with stuff 
+      //  borderTopRightRadius: 10,
+      //  borderBottomLeftRadius: 50000,
+      //  borderBottomRightRadius: 50000,
+      // borderTopColor: "black",
+      // borderBottomColor: "black",
+      // borderLeftColor: "#52b788",
+      // borderRightColor:"#52b788",
+
     },      
     container: {
       flex: 1,
