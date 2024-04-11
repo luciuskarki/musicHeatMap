@@ -82,8 +82,9 @@ export default class Map extends React.Component<any,any>{
               latitude: position.coords.latitude,
               longitude: position.coords.longitude,
             }),
+            
           });
-          console.log("location" + this.state.latitude)
+          console.log("location" + this.state.latitude);
         },
         error => {
           Alert.alert(error.message.toString());
@@ -94,6 +95,28 @@ export default class Map extends React.Component<any,any>{
       );
     }
     });
+    Geolocation.watchPosition(
+      position => {
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          coordinates: this.state.coordinates.concat({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          }),
+        });
+      },
+      error => {
+        console.log(error);
+      },
+      {
+        showLocationDialog: true,
+        enableHighAccuracy: true,
+        timeout: 20000,
+        maximumAge: 0,
+        distanceFilter: 0,
+      },
+    );
   }
 //if this is where we can pass in the data to heatmap
     render() {    
@@ -121,5 +144,4 @@ export default class Map extends React.Component<any,any>{
         
     ); 
   }
-}
-
+} 
