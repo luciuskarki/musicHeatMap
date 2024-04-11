@@ -85,6 +85,12 @@ const styles = StyleSheet.create({
     centerItems:{
       alignItems: 'center',
       flex:3,
+    },
+    colorBorder:{
+        borderWidth: 5,
+        borderRadius:20,
+        borderColor:textColor,
+        margin:10,
     }
   });
 
@@ -138,9 +144,9 @@ const SongPostPage = props => {
             {tracks.map((track, i) => {
                 console.log(JSON.stringify(track, null, 2));
                 return (
-                    <View>
-                        
-                        <Text style={{color:'#FFFFFF'}} key={track.id}>{track.name}</Text>
+                    <View style={styles.colorBorder} key={track.id}>
+                        <Text style={{color:'#FFFFFF'}} >{track.name}</Text>
+                        <Text style={{color:'#FFFFFF'}} >{track.artists[0].name}</Text>
                     </View>
                 )
             })}
