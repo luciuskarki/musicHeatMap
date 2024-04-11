@@ -69,14 +69,17 @@ const styles = StyleSheet.create({
     },
     textInputBox:{
       height:70,
-      width:'90%',
+      width:'100%',
       backgroundColor: bgColor,
       borderColor: textColor,
       borderWidth: 5,
       borderRadius: 20,
+      borderLeftWidth: 0,
+      borderRightWidth: 0,
       margin:10,
       padding:20,
-      fontSize:30
+      fontSize:30,
+      color: textColor
     },
     fullSize:{
       ...StyleSheet.absoluteFillObject,
@@ -87,10 +90,34 @@ const styles = StyleSheet.create({
       flex:3,
     },
     colorBorder:{
-        borderWidth: 5,
-        borderRadius:20,
+        borderWidth: 3,
+        borderRadius:0,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        borderTopWidth: 0,
         borderColor:textColor,
-        margin:10,
+        margin:0,
+        padding: 12
+    },
+    songText:{
+      fontSize: 20,
+      color: textColor
+    },
+    searchButton:{
+      alignContent: 'center',
+      fontSize: 20,
+      color: "black",
+      borderWidth: 2,
+      borderColor: textColor,
+      backgroundColor: "#528954",
+      margin: 1,
+      padding: 10
+    },
+    outsideButton:{
+      color: textColor,
+      borderWidth: 1,
+      borderColor: "#3F8D43",
+      margin: 10,
     }
   });
 
@@ -137,16 +164,21 @@ const SongPostPage = props => {
             <TouchableOpacity style={styles.goBackButtonPost} onPress={onPress}/>
         </View>
         <View  style={styles.centerItems}>
-            <TextInput id='searchbox' onChangeText={newText => setSearchInput(newText)} defaultValue={searchInput} style={styles.textInputBox} placeholder='Search for your song!'></TextInput>
-            <Button title={'Search'} onPress={search}></Button>
+            <TextInput id='searchbox' onChangeText={newText => setSearchInput(newText)} defaultValue={searchInput} style={styles.textInputBox} placeholderTextColor={textColor} placeholder='Search for your song!'></TextInput>
+            
+            <TouchableOpacity onPress={search}>
+              <View style = {styles.outsideButton}>
+                <Text style = {styles.searchButton}>Search</Text>
+                </View>
+            </TouchableOpacity>
         </View>
         <ScrollView style={{flex:1}}>
             {tracks.map((track, i) => {
                 console.log(JSON.stringify(track, null, 2));
                 return (
                     <View style={styles.colorBorder} key={track.id}>
-                        <Text style={{color:'#FFFFFF'}} >{track.name}</Text>
-                        <Text style={{color:'#FFFFFF'}} >{track.artists[0].name}</Text>
+                        <Text style={styles.songText} >{track.name}</Text>
+                        <Text style={styles.songText} >{track.artists[0].name}</Text>
                     </View>
                 )
             })}
