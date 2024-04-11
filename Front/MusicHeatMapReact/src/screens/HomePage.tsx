@@ -17,7 +17,7 @@ import {
     Pressable,
     Modal
   } from 'react-native';
-
+import SongPostPage from './SongSearch.tsx';
 import MapView, {Heatmap, Marker, PROVIDER_GOOGLE} from 'react-native-maps'
 
 var textColor = "#52b788" //b864b9 pink 95d5b2 green
@@ -116,24 +116,6 @@ const MapPage = props => {
       </TouchableOpacity>
     </View>
   ); 
-}
-
-const SongPostPage = props => {
-  const onPress = () => {
-    props.navigation.navigate('ScreenOne');
-  };
-  return(
-    <ScrollView style={styles.fullSize}>
-      <View>
-        <TouchableOpacity style={styles.goBackButtonPost} onPress={onPress}/>
-      </View >
-      <View  style={styles.centerItems}>
-        <TextInput placeholder='Song Name!' allowFontScaling={false} placeholderTextColor={textColor} style={styles.textInputBox}></TextInput>
-        <TextInput placeholder='Artist' allowFontScaling={false} placeholderTextColor={textColor} style={styles.textInputBox}></TextInput>
-        <TextInput placeholder='Genre' allowFontScaling={false} placeholderTextColor={textColor} style={styles.textInputBox}></TextInput>
-      </View>    
-    </ScrollView>
-  );
 }
 
 function HomePage() {
