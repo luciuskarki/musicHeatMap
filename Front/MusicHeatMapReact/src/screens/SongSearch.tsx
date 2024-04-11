@@ -69,14 +69,13 @@ const styles = StyleSheet.create({
     },
     textInputBox:{
       height:70,
-      width:'90%',
       backgroundColor: bgColor,
       borderColor: textColor,
       borderWidth: 5,
       borderRadius: 20,
-      margin:10,
-      padding:20,
-      fontSize:30
+      paddingLeft:15,
+      fontSize:30,
+      flex:8
     },
     fullSize:{
       ...StyleSheet.absoluteFillObject,
@@ -87,10 +86,28 @@ const styles = StyleSheet.create({
       flex:3,
     },
     colorBorder:{
-        borderWidth: 5,
-        borderRadius:20,
-        borderColor:textColor,
         margin:10,
+        padding: 10,
+        flexDirection:'row',
+    },
+    albumImage:{
+        aspectRatio:'1/1',
+        flex:1
+    },
+    titleAndArtist:{
+        flex:3,
+        padding: 10,
+        
+    },
+    songTitle:{
+        fontSize: 20,
+        color: '#FFFFFF'
+    },
+    artistName:{
+        fontSize: 15,
+        color: '#FFFFFF'
+    },
+    searchButton:{
     }
   });
 
@@ -132,21 +149,22 @@ const SongPostPage = props => {
     }
     return(
       <ScrollView style={styles.fullSize}>
-        
-        <View>
+        <View  style={styles.colorBorder}>
+            <TextInput id='searchbox' onChangeText={newText => setSearchInput(newText)} defaultValue={searchInput} style={styles.textInputBox} placeholder='Search for your song!'></TextInput>
             <TouchableOpacity style={styles.goBackButtonPost} onPress={onPress}/>
         </View>
-        <View  style={styles.centerItems}>
-            <TextInput id='searchbox' onChangeText={newText => setSearchInput(newText)} defaultValue={searchInput} style={styles.textInputBox} placeholder='Search for your song!'></TextInput>
+        <View style={styles.centerItems}>
             <Button title={'Search'} onPress={search}></Button>
         </View>
         <ScrollView style={{flex:1}}>
             {tracks.map((track, i) => {
-                console.log(JSON.stringify(track, null, 2));
                 return (
                     <View style={styles.colorBorder} key={track.id}>
-                        <Text style={{color:'#FFFFFF'}} >{track.name}</Text>
-                        <Text style={{color:'#FFFFFF'}} >{track.artists[0].name}</Text>
+                        <Image style={styles.albumImage} source={{uri:track.album.images[0].url}}></Image>
+                        <View style={styles.titleAndArtist}>
+                            <Text style={styles.songTitle} >{track.name}</Text>
+                            <Text style={styles.artistName} >{track.artists[0].name}</Text>
+                        </View>
                     </View>
                 )
             })}
