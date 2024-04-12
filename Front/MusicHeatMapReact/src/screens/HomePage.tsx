@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import Geolocation from "react-native-geolocation-service";
 
@@ -21,16 +20,7 @@ import {
 
 import MapView, {Polyline, Heatmap, Marker, PROVIDER_GOOGLE} from 'react-native-maps'
 
-const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-       justifyContent: 'flex-end',
-       alignItems: 'center',
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-  },
-});
+
 
 export default class Map extends React.Component<any,any>{
   
@@ -95,6 +85,7 @@ export default class Map extends React.Component<any,any>{
       );
     }
     });
+    
     Geolocation.watchPosition(
       position => {
         this.setState({
@@ -117,31 +108,59 @@ export default class Map extends React.Component<any,any>{
         distanceFilter: 0,
       },
     );
-  }
+    
+  };
+
+  
 //if this is where we can pass in the data to heatmap
-    render() {    
+    render() {   
+      let points=[{latitude: 44.473215997359425, longitude: -73.20414593214373, weight: 1},
+        {latitude: 44.474215997359425, longitude: -73.20314593214373, weight: 1},
+        {latitude: 44.474215997359425, longitude: -73.20214593214373, weight: 1},
+        {latitude: 44.473215997359425, longitude: -73.20314593214373, weight: 1}
+        ] 
+      //for if you need to test
+      //console.log(this.state.latitude + " " + this.state.longitude)
     return (
       
         <View style={styles.container}>
             <MapView
                 //this is where you can change the properties of the map
-               provider={PROVIDER_GOOGLE}
-               style={styles.map}
-               region={{
-              latitude: this.state.latitude,
-               longitude: this.state.longitude,
-               latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-                }}>
+                provider={PROVIDER_GOOGLE}
+                style={styles.map}
+                showsUserLocation={true}
+                loadingEnabled={true}
+                region={{
+                   latitude: this.state.latitude,
+                   longitude: this.state.longitude,
+                   latitudeDelta: 0.0922,
+                   longitudeDelta: 0.0421,
+                }}
+                >
               <Marker
               coordinate={{
-            latitude: this.state.latitude,
-            longitude: this.state.longitude,
+                latitude: this.state.latitude,
+                longitude: this.state.longitude,
                 }}>
               </Marker>
+              <Heatmap
+                    //we can potentially change the gradient of the heatmap
+                    points={points}>
+              </Heatmap>
             </MapView>
         </View>
         
     ); 
   }
 } 
+
+const styles = StyleSheet.create({
+  container: {
+    ...StyleSheet.absoluteFillObject,
+       justifyContent: 'flex-end',
+       alignItems: 'center',
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+});
