@@ -52,12 +52,11 @@ const styles = StyleSheet.create({
       color: textColor
     },
     goBackButtonPost:{
-      borderRadius: 50,
-      margin: 20,
-      height:40,
-      width:40,
+      borderRadius: 10,
+      flex:2,
       alignContent: 'center',
-      backgroundColor: '#ffffff',
+      backgroundColor: textColor,
+      marginBottom:5
     },
     textInputBox:{
       height:70,
@@ -66,8 +65,11 @@ const styles = StyleSheet.create({
       borderWidth: 5,
       borderRadius: 20,
       paddingLeft:15,
-      fontSize:30,
-      flex:8
+      marginRight:5,
+      fontSize:20,
+      flex: 9,
+      marginBottom: 5,
+      color:textColor
     },
     fullSize:{
       ...StyleSheet.absoluteFillObject,
@@ -78,8 +80,7 @@ const styles = StyleSheet.create({
       flex:3,
     },
     colorBorder:{
-        margin:10,
-        padding: 10,
+        margin:2,
         flexDirection:'row',
     },
     albumImage:{
@@ -99,6 +100,14 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: '#FFFFFF'
     },
+    textInBackButton:{
+        justifyContent:'center',
+        textAlign:'center',
+        textAlignVertical:'center',
+        flex:1,
+        fontSize: 15,
+        color:bgColor
+    }
   });
 
 const SongPostPage = props => {
@@ -141,8 +150,12 @@ const SongPostPage = props => {
     return(
       <ScrollView style={styles.fullSize}>
         <View  style={styles.colorBorder}>
-            <TextInput id='searchbox' onChangeText={newText => setSearchInput(newText)} defaultValue={searchInput} style={styles.textInputBox} placeholder='Search for your song!'></TextInput>
-            <TouchableOpacity style={styles.goBackButtonPost} onPress={onPress}/>
+            <TextInput id='searchbox' onChangeText={newText => setSearchInput(newText)} placeholderTextColor={textColor} defaultValue={searchInput} style={styles.textInputBox} placeholder='Search for your song!'></TextInput>
+            <TouchableOpacity style={styles.goBackButtonPost} onPress={onPress}>
+                <Text style={styles.textInBackButton}>
+                    Back
+                </Text>
+            </TouchableOpacity>        
         </View>
         <View style={styles.centerItems}>
             <Button title={'Search'} onPress={search}></Button>
@@ -156,7 +169,7 @@ const SongPostPage = props => {
                         console.log(track.artists[0].name)
                         console.log(Date().toLocaleString())
                         onPress()
-                    }}>
+                    }} style={{marginBottom:20}}>
                         <View style={styles.colorBorder}>
                             <Image style={styles.albumImage} source={{uri:track.album.images[0].url}}></Image>
                             <View style={styles.titleAndArtist}>
