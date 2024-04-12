@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
       color:textColor
     },
     fullSize:{
-      ...StyleSheet.absoluteFillObject,
+      height:'90%',
       backgroundColor: bgColor,
     },
     centerItems:{
@@ -148,7 +148,8 @@ const SongPostPage = props => {
             .then(data => {setTracks(data.tracks.items)})
     }
     return(
-      <ScrollView style={styles.fullSize}>
+    <View style={styles.fullSize}>
+      <ScrollView>
         <View  style={styles.colorBorder}>
             <TextInput id='searchbox' onChangeText={newText => setSearchInput(newText)} placeholderTextColor={textColor} defaultValue={searchInput} style={styles.textInputBox} placeholder='Search for your song!'></TextInput>
             <TouchableOpacity style={styles.goBackButtonPost} onPress={onPress}>
@@ -182,6 +183,7 @@ const SongPostPage = props => {
             })}
         </ScrollView> 
       </ScrollView>
+      </View>
     );
   }
 
