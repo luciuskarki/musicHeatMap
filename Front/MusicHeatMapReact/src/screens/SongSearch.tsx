@@ -1,26 +1,18 @@
-import React, {Component} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
 import {
-    SafeAreaView,
     ScrollView,
     Image,
-    StatusBar,
     TextInput,
     StyleSheet,
     Text,
-    useColorScheme,
     View,
-    Alert,
     TouchableOpacity,
-    Platform,
-    Pressable,
-    Modal,
     Button
-  } from 'react-native';
+    } from 'react-native';
 
-import MapView, {Heatmap, Marker, PROVIDER_GOOGLE} from 'react-native-maps'
-import { useState, useEffect } from 'react';
-import { FlatList } from 'react-native-gesture-handler';
+import { 
+    useState,
+    useEffect 
+    } from 'react';
 
 var textColor = "#52b788" //b864b9 pink 95d5b2 green
 var bgColor = "#1b2021"
@@ -107,17 +99,16 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: '#FFFFFF'
     },
-    searchButton:{
-    }
   });
 
 const SongPostPage = props => {
     const [searchInput, setSearchInput] = useState("");
     const [accessToken, setAccessToken] = useState("");
     const [tracks, setTracks] = useState([]);
+    const [songInfo, setSongInfo] = useState([]);
 
     const onPress = () => {
-      props.navigation.navigate('ScreenOne');
+        props.navigation.navigate('ScreenOne');
     };
     
     useEffect(() => {
@@ -159,19 +150,24 @@ const SongPostPage = props => {
         <ScrollView style={{flex:1}}>
             {tracks.map((track, i) => {
                 return (
-                    <View style={styles.colorBorder} key={track.id}>
-                        <Image style={styles.albumImage} source={{uri:track.album.images[0].url}}></Image>
-                        <View style={styles.titleAndArtist}>
-                            <Text style={styles.songTitle} >{track.name}</Text>
-                            <Text style={styles.artistName} >{track.artists[0].name}</Text>
+                    <TouchableOpacity key={track.id} onPress={ () => {
+                        console.log(track.album.images[0].url)
+                        console.log(track.name)
+                        console.log(track.artists[0].name)
+                        console.log(Date().toLocaleString())
+                        onPress()
+                    }}>
+                        <View style={styles.colorBorder}>
+                            <Image style={styles.albumImage} source={{uri:track.album.images[0].url}}></Image>
+                            <View style={styles.titleAndArtist}>
+                                <Text style={styles.songTitle} >{track.name}</Text>
+                                <Text style={styles.artistName} >{track.artists[0].name}</Text>
+                            </View>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 )
             })}
         </ScrollView> 
-        <View>
-            <Text style={{color:'#FFFFFF'}}>Bruh</Text>
-        </View>  
       </ScrollView>
     );
   }
