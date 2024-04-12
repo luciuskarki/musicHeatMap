@@ -1,6 +1,5 @@
 //React Imports
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -14,17 +13,10 @@ import MyTabs from "./src/screens/MyTabs.tsx"
 
 //Button and Color Imports
 import {
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  FlatList,
-  FlatListComponent,
+
 } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
 
 
-const Tab = createBottomTabNavigator();
 
 
 

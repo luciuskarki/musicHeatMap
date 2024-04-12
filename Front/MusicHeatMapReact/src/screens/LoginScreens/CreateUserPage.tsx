@@ -10,15 +10,10 @@ import { useState } from 'react';
 //color changes 
 //Button and Color Imports
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
-  Button,
-  Alert,
+    Alert,
   TouchableOpacity
 } from 'react-native';
 import { ReactNativeFirebase } from '@react-native-firebase/app';

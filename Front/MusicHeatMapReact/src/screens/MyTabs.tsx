@@ -6,18 +6,9 @@ import ProfileScreen from './ProfilePage.tsx';
 import HistoryScreen from './HistoryPage.tsx';
 
 import {
-  SafeAreaView,
-  ScrollView,
   Image,
-  StatusBar,
-  TextInput,
-  StyleSheet,
   Text,
-  useColorScheme,
   View,
-  Button,
-  Alert,
-  TouchableOpacity
 } from 'react-native';
 
 

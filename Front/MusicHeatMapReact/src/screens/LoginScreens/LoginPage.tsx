@@ -6,22 +6,15 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import auth from '@react-native-firebase/auth';
 import { ReactNativeFirebase } from '@react-native-firebase/app';
 import { useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 
 //import Icon from 'react-native-vector-icons/FontAwesome' for later
 //color changes 
 //Button and Color Imports
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   TextInput,
   StyleSheet,
   Text,
-  useColorScheme,
-  View,
-  Button,
-  Alert,
+  View,  Alert,
   TouchableOpacity
 } from 'react-native';
 //"./src/screens/LoginScreens/LoginPage"
