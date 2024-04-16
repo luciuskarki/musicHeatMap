@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, FlatList, Image} from "react-native"; 
 
 
-const SearchFilter = ({data, input, setInput}) => {
+const SearchFriend = ({data, input, setInput}) => {
 return (
     <View>
         <FlatList data={data} renderItem={({item}) => {
@@ -10,13 +10,10 @@ return (
                 return (
                     <View style = {styles.border}>
                         <View style = {styles.MusicContainer}>
-                            <Text style={styles.HistoryText}>{item.username}</Text>
-                            <Text style={styles.HistoryText}>{item.title}</Text>
-                            <Text style={styles.HistoryText}>{item.artist}</Text>
-                            <Text style={styles.HistoryText}>{item.genre}</Text>
+                            <Text style={styles.FriendText}>{item.username}</Text>
                         </View>
                     <View style={styles.ImagesContainer}>
-                        <Image source={require("../assets/settingsicon.png")}
+                        <Image source={require("../assets/important_photo_test.jpg")}
                             style={{
                             width:100,
                             height:100 }}>
@@ -25,17 +22,14 @@ return (
             </View>
               )
             }
-            if (item.title.toLowerCase().includes(input.toLowerCase())){
+            if (item.username.toLowerCase().includes(input.toLowerCase())){
                 return(
                     <View style = {styles.border}>
                     <View style = {styles.MusicContainer}>
-                        <Text style={styles.HistoryText}>{item.username}</Text>
-                        <Text style={styles.HistoryText}>{item.title}</Text>
-                        <Text style={styles.HistoryText}>{item.artist}</Text>
-                        <Text style={styles.HistoryText}>{item.genre}</Text>
+                        <Text style={styles.FriendText}>{item.username}</Text>
                     </View>
                 <View style={styles.ImagesContainer}>
-                    <Image source={require("../assets/settingsicon.png")}
+                    <Image source={require("../assets/important_photo_test.jpg")}
                         style={{
                         width:100,
                         height:100 }}>
@@ -51,18 +45,7 @@ return (
 
 }
 
-export default SearchFilter
-// --------- PlaceHolder code | Check if criteria is not met, and display the text, 
-//                              issue right now is that it renders x amount of times isntead of once
-       // if (input != item.title.toLowerCase().includes(input.toLowerCase())){
-            //     return(
-            //             <View>
-            //               <Text>No criteria meets this search, sorry!.</Text>
-            //             </View>
-                           
-            //     )
-            // }
-
+export default SearchFriend
             
 var textColor = "#52b788" //b864b9 pink 95d5b2 green
 var bgColor = "#1b2021"
@@ -79,7 +62,7 @@ border:{
     padding: 10,
     backgroundColor: bgColor,
 },
-HistoryText: {
+FriendText: {
     fontSize: 20,
     color: textColor
   },
