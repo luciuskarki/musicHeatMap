@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import SearchFilter from './SearchBar';
+import FriendsHolder from './Friends';
+
 import {
     SafeAreaView,
     ScrollView,
@@ -16,13 +20,65 @@ import {
     TouchableOpacity
   } from 'react-native';
 
+var username = 'Username'
+var UniqueID = 'UniqueID'
 
+const showAlert = () =>
+  Alert.alert(
+    'Change your Display Name!',
+    '',
+    [
+      {
+        text: 'Cancel',
+        onPress: () => Alert.alert('Cancel Pressed'),
+        style: 'cancel',
+      },
+    ],
+    {
+      cancelable: true,
+    }
+  );
+/*
+function changeDisplayName () {
+  const [text, setText] = useState('')
+
+  return (
+    
+    <View>
+      <TextInput
+        value={text}
+        style={{ fontSize: 42, color: 'steelblue' }}
+        placeholder="Type here..."
+        onChangeText={(text) => {
+          setText(text)
+        }}
+      />
+      <Text style={{ fontSize: 24 }}>
+        {'\n'}You entered: {text}
+      </Text>
+    </View>
+    )
+}
+*/   //Set State for changing display name, having troubles implementing due to hooks of useState
 
   const HomeProfile = props => {
-    const onPress = () => {
+    const imagePress = () => {
       props.navigation.navigate('ScreenTwo');
+  
+
     };
     
+    const namePress = () => {
+      props.navigation.navigate('ScreenThree');
+
+    };
+    
+    const friendPress = () => {
+      props.navigation.navigate('ScreenFour');
+
+    };
+    
+  
   return (
     <SafeAreaView style = {styles.container}>
       <View style = {styles.profileBorder}>
@@ -32,32 +88,57 @@ import {
             </Image>
         </View>
         <View style = {styles.userTextContainer}>
-          <Text style = {styles.userText}>{`Username \nUniqueID `}</Text>
+          <Text style = {styles.userText}> {username} {'\n'} {UniqueID} </Text>
         </View> 
       </View>
       
+      <View style = {styles.buttonContainer}>
+      <TouchableOpacity onPress={imagePress}>
+        <Text style = {styles.buttonText}> Change Profile Picture</Text>
+      </TouchableOpacity>
+
+    </View>
+
     <View style = {styles.buttonContainer}>
-      <TouchableOpacity onPress={onPress}>
-        <Text style = {styles.buttonText}> Profile Settings</Text>
+      <TouchableOpacity onPress={namePress}>
+        <Text style = {styles.buttonText}> Change Display Name</Text>
       </TouchableOpacity>
     </View>
 
 
 
-
+    <View style = {styles.buttonContainer}>
+      <TouchableOpacity onPress={friendPress}>
+        <Text style = {styles.buttonText}> Friends</Text>
+      </TouchableOpacity>
+    </View>
       
     </SafeAreaView>
   );
   } //add buttons between 2 views and then apply to "ScreenTwo"
 
-  const ProfileSettings = () => {
+  const ChangeProfileImg = () => {
     return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>PlaceHolder</Text>
+      <View>
+        <Text> PlaceHolder</Text>
       </View>
     );
   };
 
+  const changeDisplayName = () => {
+    return (
+      <View>
+        <Text> PlaceHolder</Text>
+      </View>
+    );
+  };
+
+  const Friends = () => {
+    return (
+      <FriendsHolder>
+      </FriendsHolder>
+    );
+  };
 
   function ProfileScreen() {
     
@@ -66,7 +147,10 @@ import {
     return (
         <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name="ScreenOne" component={HomeProfile} />
-          <Stack.Screen name="ScreenTwo" component={ProfileSettings} />
+          <Stack.Screen name="ScreenTwo" component={ChangeProfileImg} />
+          <Stack.Screen name="ScreenThree" component={changeDisplayName} />
+          <Stack.Screen name="ScreenFour" component={Friends} />
+
         </Stack.Navigator>
     );
   };
