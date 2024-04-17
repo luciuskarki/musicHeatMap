@@ -29,7 +29,7 @@ function MyTabs() {
     <Tab.Navigator screenOptions={{
       tabBarStyle: {
         position: 'absolute',
-        height: 100,
+        height: "10%",
         elevation: 0,
         backgroundColor: 'rgba(137, 196, 244, 1)'
       },
